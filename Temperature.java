@@ -7,7 +7,7 @@ public class Temperature extends UtilityDeviceDecorator{
 		super(utilityDevice);
 		temp = temperature;
 		
-		System.out.print("Adding temperature setting to Utility");
+		System.out.println("Adding temperature setting to Utility");
 	}
 
 	public String getName() {
@@ -15,7 +15,7 @@ public class Temperature extends UtilityDeviceDecorator{
 	}
 
 	public String getStatus() {		
-		return u.getStatus() + Integer.toString(temp);
+		return u.getStatus() + " temp:" + Integer.toString(temp);
 	}
 
 }

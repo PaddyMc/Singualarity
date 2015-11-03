@@ -19,4 +19,8 @@ public class MusicPlayer implements EntertainmentDevice {
     {
     	this.musicCommand = musicStop; 
     }
+
+    public void consumeService(){
+
+    }
 }

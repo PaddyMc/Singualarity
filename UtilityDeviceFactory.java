@@ -13,9 +13,9 @@ public class UtilityDeviceFactory extends DeviceFactory {
 		{
             return new Water();
 		}
-        else if(utilityDevice.equals("electricty"))
+        else if(utilityDevice.equals("electricity"))
         {
-            return new Electricty();
+            return new Electricity();
         }
         else
         {
