@@ -10,6 +10,19 @@ public class MediaDeviceCommander {
     }
 
     void synergize(){
+
+		//Testing Facade
+    	HomeLoginFacade accessHome = new HomeLoginFacade("Pitiful Human", 1234);
+    	accessHome.loginToHome();
+        
+	//Testing Command Patterns - Alarm, Electricity & Music
+    	Alarm testAlarm = new Alarm();
+    	Command test = new AlarmOffCommand(testAlarm);
+        System.out.println(test.execute());
+        test = new AlarmOnCommand(testAlarm);
+        System.out.println(test.execute());
+
+		
         // Factory to create entertainment devices
         DeviceFactory entertainmentDeviceFactory = DeviceBuilder.getDevice("entertainment");
 
@@ -38,5 +51,7 @@ public class MediaDeviceCommander {
         EntertainmentDevice videoPlayer = entertainmentDeviceFactory.getEntertainmentDevice("video");
         System.out.println(videoPlayer.getName());
         //System.out.println(videoPlayer.getStatus());
+		
+		
     }
 }
