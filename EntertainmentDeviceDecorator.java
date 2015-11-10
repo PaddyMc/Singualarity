@@ -1,18 +1,18 @@
 package testMediaDevice;
 
 abstract class EntertainmentDeviceDecorator implements EntertainmentDevice  {
-	protected EntertainmentDevice e;
+	protected EntertainmentDevice entertainmentDevice;
 	
 	public EntertainmentDeviceDecorator(EntertainmentDevice entertainmentDevice)
 	{
-		e = entertainmentDevice;
+		this.entertainmentDevice = entertainmentDevice;
 	}
 	public String getName() {
-		return e.getName();
+		return entertainmentDevice.getName();
 	}
 
 	public String getStatus() {		
-		return e.getStatus();
+		return entertainmentDevice.getStatus();
 	}
 
 

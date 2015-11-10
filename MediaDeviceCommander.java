@@ -43,15 +43,19 @@ public class MediaDeviceCommander {
         Command mp = new MusicPauseCommand(musicPlayer);
         System.out.println(mp.execute());
 
-        Command electrictyStatusCommand = new UtilityStatusCommand(electricity);
-        System.out.println(electrictyStatusCommand.execute());
+        Command electricityStatusCommand = new UtilityStatusCommand(electricity);
+        System.out.println(electricityStatusCommand.execute());
 
 
         // entertainmentDeviceFactory creates music video device
         EntertainmentDevice videoPlayer = entertainmentDeviceFactory.getEntertainmentDevice("video");
         System.out.println(videoPlayer.getName());
         //System.out.println(videoPlayer.getStatus());
-		
-		
+
+        AudioVolume videoPlayer1 = new AudioVolume(videoPlayer);
+        System.out.println(videoPlayer1.getVolume());
+        Command volumeDown = new VolumeDownCommand(videoPlayer1);
+        volumeDown.execute();
+        System.out.println(videoPlayer1.getVolume());
     }
 }
