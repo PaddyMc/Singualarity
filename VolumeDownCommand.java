@@ -15,5 +15,15 @@ public class VolumeDownCommand implements Command{
         String execution = "volume decreased";
         return execution;
     }
+
+	public void addInterceptor(Interceptor i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Interceptor getInterceptor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

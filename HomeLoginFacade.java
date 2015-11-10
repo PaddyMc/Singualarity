@@ -1,6 +1,6 @@
 package testMediaDevice;
 
-//Decouples client frm all sub components
+//Decouples client from all sub components
 //Simplifies the interface
 public class HomeLoginFacade {
 

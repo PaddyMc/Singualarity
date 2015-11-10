@@ -4,6 +4,7 @@ package testMediaDevice;
  * Created by User on 10/11/2015.
  */
 public class AudioVolume extends EntertainmentDeviceDecorator{
+	//EntertainmentDevice entertainmentDevice;
     // Default value for volume
     protected int volume = 20;
 
@@ -14,7 +15,8 @@ public class AudioVolume extends EntertainmentDeviceDecorator{
     }
 
     public String getName() {
-        return entertainmentDevice.getName();
+       
+		return entertainmentDevice.getName();
     }
 
     public String getStatus() {

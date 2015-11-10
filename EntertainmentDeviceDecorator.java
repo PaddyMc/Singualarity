@@ -5,7 +5,7 @@ abstract class EntertainmentDeviceDecorator implements EntertainmentDevice  {
 	
 	public EntertainmentDeviceDecorator(EntertainmentDevice entertainmentDevice)
 	{
-		this.entertainmentDevice = entertainmentDevice;
+		entertainmentDevice = entertainmentDevice;
 	}
 	public String getName() {
 		return entertainmentDevice.getName();

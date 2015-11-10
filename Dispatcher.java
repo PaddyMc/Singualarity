@@ -3,26 +3,44 @@ package testMediaDevice;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by User on 03/11/2015.
- */
 public class Dispatcher {
     List<Interceptor> interceptorList = new ArrayList<Interceptor>();
 
-    void distpatch(){
+    void dispatch(Interceptor inter){
+    	Interceptor i = iterateList(inter);
+    	if(i == null)
+    	{
+    		
+    	}else
+    	{
+    		i.event();
+    	}
 
     }
 
-    void register(){
-
+    void register(Interceptor i){
+    	interceptorList.add(i);
+    	
     }
 
-    void remove(){
-
+    void remove(Interceptor i){
+    	interceptorList.remove(i);
     }
 
-    void iterateList(){
-
+    public Interceptor iterateList(Interceptor interceptor){
+    	for(Interceptor i:interceptorList)
+    	{
+    		if(i == interceptor)
+    		{
+    			//System.out.println("found do");
+    			return interceptor;
+    		}
+    		else
+    		{
+    			System.out.println("No Interceptor");
+    		}
+    	}
+		return null;
     }
 }
 

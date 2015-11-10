@@ -1,8 +1,5 @@
 package testMediaDevice;
 
-/**
- * Created by User on 03/11/2015.
- */
 public class MediaDeviceCommander {
 
     MediaDeviceCommander() {
@@ -15,47 +12,37 @@ public class MediaDeviceCommander {
     	HomeLoginFacade accessHome = new HomeLoginFacade("Pitiful Human", 1234);
     	accessHome.loginToHome();
         
-	//Testing Command Patterns - Alarm, Electricity & Music
+	    //Testing Command Patterns - Alarm, Electricity & Music
     	Alarm testAlarm = new Alarm();
     	Command test = new AlarmOffCommand(testAlarm);
-        System.out.println(test.execute());
-        test = new AlarmOnCommand(testAlarm);
-        System.out.println(test.execute());
+        
 
 		
-        // Factory to create entertainment devices
+        // Factorys to create entertainment + Utility devices
         DeviceFactory entertainmentDeviceFactory = DeviceBuilder.getDevice("entertainment");
-
-        // Utilities
         DeviceFactory utilityDeviceFactory = DeviceBuilder.getDevice("utility");
-
-        UtilityDevice electricity = utilityDeviceFactory.getUtilityDevice("electricity");
-        System.out.println(electricity.getName());
-        electricity = new Temperature(electricity, 25);
-
-
-
-        // entertainmentDeviceFactory creates music player device
-        EntertainmentDevice musicPlayer = entertainmentDeviceFactory.getEntertainmentDevice("music");
-        //System.out.println(musicPlayer.getName());
-        //System.out.println(musicPlayer.getStatus());
-
-        Command mp = new MusicPauseCommand(musicPlayer);
-        System.out.println(mp.execute());
-
-        Command electricityStatusCommand = new UtilityStatusCommand(electricity);
-        System.out.println(electricityStatusCommand.execute());
-
-
-        // entertainmentDeviceFactory creates music video device
+        
         EntertainmentDevice videoPlayer = entertainmentDeviceFactory.getEntertainmentDevice("video");
-        System.out.println(videoPlayer.getName());
-        //System.out.println(videoPlayer.getStatus());
+        EntertainmentDevice musicPlayer = entertainmentDeviceFactory.getEntertainmentDevice("music"); 
+        UtilityDevice electricity = utilityDeviceFactory.getUtilityDevice("electricity");
+        electricity = new Temperature(electricity, 25);
+               
+        Command mp = new MusicPauseCommand(musicPlayer);
+        
+        Dispatcher d = new Dispatcher();        
+        MusicPlayerInterceptor inter = new MusicPlayerInterceptor();        
+        mp.addInterceptor(inter);
+        d.register(inter);   
+        mp.execute();
+        
+        
 
+        Command electrictyStatusCommand = new UtilityStatusCommand(electricity);
+        
         AudioVolume videoPlayer1 = new AudioVolume(videoPlayer);
-        System.out.println(videoPlayer1.getVolume());
         Command volumeDown = new VolumeDownCommand(videoPlayer1);
         volumeDown.execute();
-        System.out.println(videoPlayer1.getVolume());
+		
+		
     }
 }

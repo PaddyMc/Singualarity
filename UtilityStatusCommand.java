@@ -12,4 +12,14 @@ public class UtilityStatusCommand implements Command{
 		return this.util.getStatus();
 	}
 
+	public void addInterceptor(Interceptor i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Interceptor getInterceptor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
