@@ -1,19 +1,21 @@
 package testMediaDevice;
 
-/**
- * Created by User on 10/11/2015.
- */
-public class VolumeDownCommand implements Command{
-    private AudioVolume entertainmentDevice;
+public class VolumeDownCommand implements Command {
+    private AudioVolume audioVolume;
+    Interceptor i;
 
-    public VolumeDownCommand (AudioVolume entertainmentDevice) {
-        this.entertainmentDevice = entertainmentDevice;
+    public VolumeDownCommand(AudioVolume audioVolume) {
+        this.audioVolume = audioVolume;
     }
 
     public String execute() {
-        entertainmentDevice.setVolume(-1);
+        audioVolume.setVolume(audioVolume.getVolume() - 1);
         String execution = "volume decreased";
         return execution;
+    }
+
+    public void addInterceptor(Interceptor i) {
+        this.i = i;
     }
 }
 

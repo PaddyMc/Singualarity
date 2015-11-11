@@ -1,18 +1,20 @@
 package testMediaDevice;
 
-/**
- * Created by User on 10/11/2015.
- */
-public class VolumeUpCommand {
-    private AudioVolume entertainmentDevice;
+public class VolumeUpCommand implements Command {
+    private AudioVolume audioVolume;
+    private Interceptor i;
 
-    public VolumeUpCommand (AudioVolume entertainmentDevice) {
-        this.entertainmentDevice = entertainmentDevice;
+    public VolumeUpCommand(AudioVolume entertainmentDevice) {
+        this.audioVolume = entertainmentDevice;
     }
 
     public String execute() {
-        entertainmentDevice.setVolume(+1);
+        audioVolume.setVolume(audioVolume.getVolume() + 1);
         String execution = "volume increased";
         return execution;
+    }
+
+    public void addInterceptor(Interceptor i) {
+        this.i = i;
     }
 }

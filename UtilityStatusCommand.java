@@ -1,15 +1,19 @@
 package testMediaDevice;
 
-public class UtilityStatusCommand implements Command{
+public class UtilityStatusCommand implements Command {
 
-	UtilityDevice util;
-	public UtilityStatusCommand(UtilityDevice utilityDevice)
-	{
-		this.util = utilityDevice;
-	}
+    UtilityDevice util;
+    Interceptor i;
 
-	public String execute() {
-		return this.util.getStatus();
-	}
+    public UtilityStatusCommand(UtilityDevice utilityDevice) {
+        this.util = utilityDevice;
+    }
 
+    public String execute() {
+        return this.util.getStatus();
+    }
+
+    public void addInterceptor(Interceptor i) {
+        this.i = i;
+    }
 }

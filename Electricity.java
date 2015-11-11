@@ -2,12 +2,14 @@ package testMediaDevice;
 
 public class Electricity implements UtilityDevice {
 
-	public String getName() {
-		return "Electricity";
-	}
+    public String getName() {
+        String name = "Electricity";
+        return name;
+    }
 
-	public String getStatus() {		
-		return "Active";
-	}
+    public String getStatus() {
+        String status = "Electricity is active";
+        return status;
+    }
 
 }

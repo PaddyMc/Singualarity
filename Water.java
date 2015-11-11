@@ -1,13 +1,13 @@
 package testMediaDevice;
 
-public class Water implements UtilityDevice{
+public class Water implements UtilityDevice {
 
-	public String getName() {
-		return "Water";
-	}
+    public String getName() {
+        return "Water";
+    }
 
-	public String getStatus() {
-		return "active";
-	}
+    public String getStatus() {
+        return "active";
+    }
 
 }

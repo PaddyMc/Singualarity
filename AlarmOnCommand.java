@@ -1,12 +1,22 @@
 package testMediaDevice;
 
-public class AlarmOnCommand  implements Command {
-	private Alarm myAlarm;
-	public AlarmOnCommand (Alarm a) {
-		myAlarm = a;
-	}
-	public String execute() {
-		String execution = myAlarm.armAlarm();
-		return execution;
-	}
+public class AlarmOnCommand implements Command {
+
+    private Alarm myAlarm;
+    Interceptor i;
+
+    public AlarmOnCommand(Alarm a) {
+        //create interceptor
+        myAlarm = a;
+    }
+
+    public String execute() {
+        //run interceptor
+        String execution = myAlarm.armAlarm();
+        return execution;
+    }
+
+    public void addInterceptor(Interceptor i) {
+        this.i = i;
+    }
 }
