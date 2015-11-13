@@ -8,6 +8,8 @@ public class EntertainmentDeviceFactory extends DeviceFactory {
             return new MusicPlayer();
         else if (entertainmentDevice.equals("video"))
             return new VideoPlayer();
+        else if (entertainmentDevice.equals("alarm"))
+            return new Alarm();
         else
             return null;
     }

@@ -10,6 +10,7 @@ public class UtilityStatusCommand implements Command {
     }
 
     public String execute() {
+        i.event();
         return this.util.getStatus();
     }
 
