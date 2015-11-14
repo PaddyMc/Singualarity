@@ -1,6 +1,6 @@
 package testMediaDevice;
 
-public class UtilityStatusCommand implements Command {
+public class UtilityStatusCommand implements Command,Runnable {
 
     UtilityDevice util;
     Interceptor i;
@@ -17,4 +17,12 @@ public class UtilityStatusCommand implements Command {
     public void addInterceptor(Interceptor i) {
         this.i = i;
     }
+
+	@Override
+	public void run() {
+		String threading = execute();
+		String threadingOutput =  "ThreadRunning: " + threading;
+		System.out.print(threadingOutput);
+		
+	}
 }

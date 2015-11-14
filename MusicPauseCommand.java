@@ -1,6 +1,6 @@
 package testMediaDevice;
 
-public class MusicPauseCommand implements Command {
+public class MusicPauseCommand implements Command,Runnable {
     private EntertainmentDevice myMusicPlayer;
     private Interceptor interceptor;
 
@@ -17,4 +17,9 @@ public class MusicPauseCommand implements Command {
     public void addInterceptor(Interceptor i) {
         this.interceptor = i;
     }
+    public void run() {
+		String threading = execute();
+		String threadingOutput =  "ThreadRunning: " + threading;
+		System.out.println(threadingOutput);
+	}
 }
