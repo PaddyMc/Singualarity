@@ -1,6 +1,10 @@
 package testMediaDevice;
 
+<<<<<<< HEAD
 public class VolumeDownCommand implements Runnable, Command {
+=======
+public class VolumeDownCommand implements Runnable,Command {
+>>>>>>> origin/master
     private AudioVolume audioVolume;
     Interceptor i;
 
@@ -18,11 +22,20 @@ public class VolumeDownCommand implements Runnable, Command {
         this.i = i;
     }
 
+<<<<<<< HEAD
     @Override
     public void run() {
         String threading = execute();
         String threadingOutput = "ThreadRunning: " + threading;
         System.out.println(threadingOutput);
     }
+=======
+	@Override
+	public void run() {
+		String threading = execute();
+		String threadingOutput =  "ThreadRunning: " + threading;
+		System.out.println(threadingOutput);
+	}
+>>>>>>> origin/master
 }
 
