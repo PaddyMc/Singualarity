@@ -11,9 +11,9 @@ public class LogInterceptor implements Interceptor {
     public void event() {
         Date date = new Date();
 
-        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Log.txt", true)))) {
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Log.txt", true)))) {
             out.println("Item logged: " + date.toString());
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("There was a problem:" + e);
         }
     }

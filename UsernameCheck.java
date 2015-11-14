@@ -1,7 +1,7 @@
 package testMediaDevice;
 
 public class UsernameCheck {
-    private String username = "Pitiful Human";
+    private String username = "User1";
 
     public String getUsername() {
         return username;

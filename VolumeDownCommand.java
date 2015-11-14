@@ -1,6 +1,6 @@
 package testMediaDevice;
 
-public class VolumeDownCommand implements Command {
+public class VolumeDownCommand implements Runnable, Command {
     private AudioVolume audioVolume;
     Interceptor i;
 
@@ -16,6 +16,13 @@ public class VolumeDownCommand implements Command {
 
     public void addInterceptor(Interceptor i) {
         this.i = i;
+    }
+
+    @Override
+    public void run() {
+        String threading = execute();
+        String threadingOutput = "ThreadRunning: " + threading;
+        System.out.println(threadingOutput);
     }
 }
 

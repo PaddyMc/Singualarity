@@ -10,12 +10,21 @@ public class HomeLoginFacade {
     UsernameCheck usernameChecker;
     PINCheck pinChecker;
 
-    WelcomeHome homeWelcome;
+    LoginChecking loginChecking;
+
+    public HomeLoginFacade() {
+        username = LoginCLI.requestUserName();
+        pincode = LoginCLI.requestPassword();
+        usernameChecker = new UsernameCheck();
+        pinChecker = new PINCheck();
+
+        loginChecking = new LoginChecking();
+    }
 
     public HomeLoginFacade(String newUsername, int newPin) {
         username = newUsername;
         pincode = newPin;
-        homeWelcome = new WelcomeHome();
+        loginChecking = new LoginChecking();
         usernameChecker = new UsernameCheck();
         pinChecker = new PINCheck();
     }
@@ -28,12 +37,12 @@ public class HomeLoginFacade {
         return pincode;
     }
 
-    public void loginToHome() {
+    public boolean loginToHome() {
         if (usernameChecker.usernameActive(getUsername()) &&
                 pinChecker.pinCorrect(getPinNumber())) {
-            System.out.println("Login Accepted\n");
+            return true;
         } else {
-            System.out.println("Login Failed\n");
+            return false;
         }
     }
 }

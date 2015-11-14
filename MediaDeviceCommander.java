@@ -3,15 +3,30 @@ package testMediaDevice;
 public class MediaDeviceCommander {
 
     MediaDeviceCommander() {
-        System.out.println("You have reached singularity");
+        String message;
+        message = "Your device has been activated.\nYou have reached singularity.\n";
+        System.out.println(message);
+    }
+
+    void runCommanderCLI(){
+        String input;
+        boolean resume = true;
+
+        while(resume){
+            input = CommanderCLI.getInput();
+
+            if (input.equals("synergize")){
+                synergize();
+            }
+            else if (input.equals("logout")){
+                resume = false;
+            }
+        }
+
+        System.out.println("You are logging out.\nGoodbye :)");
     }
 
     void synergize() {
-
-        // Testing Facade
-        HomeLoginFacade accessHome = new HomeLoginFacade("Pitiful Human", 1234);
-        accessHome.loginToHome();
-
         // Creating factories
         DeviceFactory entertainmentDeviceFactory = DeviceBuilder.getDevice("entertainment");
         DeviceFactory utilityDeviceFactory = DeviceBuilder.getDevice("utility");
@@ -37,6 +52,11 @@ public class MediaDeviceCommander {
         Command mpPauseCommand = new MusicPauseCommand(musicPlayer);
         Command volumeDownCommand = new VolumeDownCommand(videoPlayerAudio);
 
+        // Concurrency Threads
+        Thread runVolumeDown = new Thread((Runnable) volumeDownCommand);
+        Thread runPause = new Thread((Runnable) mpPauseCommand);
+        Thread runElectricityStatus = new Thread((Runnable) electricityStatusCommand);
+
         // Creating and registering interceptors
         Interceptor musicPlayerInterceptor = new MusicPlayerInterceptor();
         d.register(musicPlayerInterceptor);
@@ -50,10 +70,15 @@ public class MediaDeviceCommander {
         volumeDownCommand.addInterceptor(logInterceptor);
 
         // Execute some tasks
-        mpPauseCommand.execute();
-        electricityStatusCommand.execute();
+        //mpPauseCommand.execute();
+        //electricityStatusCommand.execute();
         waterStatusCommand.execute();
-        volumeDownCommand.execute();
+        //volumeDownCommand.execute();
+
+        // Threads running
+        runVolumeDown.start();
+        runPause.start();
+        runElectricityStatus.start();
 
         System.out.println("Music Player name: " + musicPlayer.getName());
         System.out.println("Video Player name: " + videoPlayer.getName());
