@@ -42,7 +42,6 @@ public class MediaDeviceCommander {
         Thread runPause = new Thread((Runnable) mpPauseCommand);
         Thread runElectrictyStatus = new Thread((Runnable) electricityStatusCommand);
         
-
         // Creating and registering interceptors
         Interceptor musicPlayerInterceptor = new MusicPlayerInterceptor();
         d.register(musicPlayerInterceptor);
@@ -56,10 +55,15 @@ public class MediaDeviceCommander {
         volumeDownCommand.addInterceptor(logInterceptor);
 
         // Execute some tasks
-        mpPauseCommand.execute();
-        electricityStatusCommand.execute();
+        //mpPauseCommand.execute();
+        //electricityStatusCommand.execute();
         waterStatusCommand.execute();
-        volumeDownCommand.execute();
+        //volumeDownCommand.execute();
+        
+        // Threads running
+        runVolumeDown.start();
+        runPause.start();
+        runElectrictyStatus.start();
 
         System.out.println("Music Player name: " + musicPlayer.getName());
         System.out.println("Video Player name: " + videoPlayer.getName());
@@ -74,9 +78,5 @@ public class MediaDeviceCommander {
         String testAlarm = test.execute();
         System.out.println(testAlarm);
         
-        // Threads running
-        runVolumeDown.start();
-        runPause.start();
-        runElectrictyStatus.start();
     }
 }
