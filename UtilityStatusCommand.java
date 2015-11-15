@@ -1,10 +1,6 @@
 package testMediaDevice;
 
-<<<<<<< HEAD
 public class UtilityStatusCommand implements Command, Runnable {
-=======
-public class UtilityStatusCommand implements Command,Runnable {
->>>>>>> origin/master
 
     UtilityDevice util;
     Interceptor i;
@@ -22,7 +18,6 @@ public class UtilityStatusCommand implements Command,Runnable {
         this.i = i;
     }
 
-<<<<<<< HEAD
     @Override
     public void run() {
         String threading = execute();
@@ -30,13 +25,4 @@ public class UtilityStatusCommand implements Command,Runnable {
         System.out.print(threadingOutput);
 
     }
-=======
-	@Override
-	public void run() {
-		String threading = execute();
-		String threadingOutput =  "ThreadRunning: " + threading;
-		System.out.print(threadingOutput);
-		
-	}
->>>>>>> origin/master
 }
